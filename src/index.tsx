@@ -37,15 +37,37 @@ const App = () => {
 
     switch (data.customRadio) {
       case '1':
-        setPassword(
-          generatePassword(_lowercase + _uppercase + _number, data.su)
-        );
+        while (1) {
+          const p = generatePassword(
+            _lowercase + _uppercase + _number,
+            data.su
+          );
+          if (p.match(/[a-z]/) && p.match(/[A-Z]/) && p.match(/[0-9]/)) {
+            setPassword(p);
+            break;
+          }
+        }
         break;
+
       case '2':
-        setPassword(generatePassword(_lowercase + _uppercase, data.su));
+        while (1) {
+          const p = generatePassword(_lowercase + _uppercase, data.su);
+          if (p.match(/[a-z]/) && p.match(/[A-Z]/)) {
+            setPassword(p);
+            break;
+          }
+        }
+
         break;
       case '3':
-        setPassword(generatePassword(_lowercase + _number, data.su));
+        while (1) {
+          const p = generatePassword(_lowercase + _number, data.su);
+          if (p.match(/[a-z]/) && p.match(/[0-9]/)) {
+            setPassword(p);
+            break;
+          }
+        }
+
         break;
       case '4':
         setPassword(generatePassword(_lowercase, data.su));
